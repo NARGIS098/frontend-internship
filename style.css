@@ -22,13 +22,13 @@ nav{
 
 nav a{
     text-decoration: none;
-    color: #3498db;
+    color:blue;
     margin: 10px;
     font-weight: bold;
 }
 
 section{
-    background-color: white;
+    background-color: rgb(247, 174, 174);
     padding: 15px;
     margin: 15px 0;
     border-radius: 10px;
@@ -42,4 +42,17 @@ footer{
     text-align: center;
     margin-top: 20px;
     color: gray;
+}
+.projects{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    background-color: #ffffff;
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
 }
