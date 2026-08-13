@@ -31,3 +31,39 @@ let student = {
 
 console.log(student.name);
 }
+const student = {
+    name: "Nargis",
+    university: "Fazaia"
+};
+
+//  Practice:destruturing,spread and rest operators,defualt para..
+
+const studentInfo = {
+    studentName: "Nargis",
+    university: "Fazaia"
+};
+
+const { studentName, university } = studentInfo;
+
+console.log(studentName);
+console.log(university);
+
+const skillsList = ["HTML", "CSS"];
+const updatedSkills = [...skillsList, "JavaScript"];
+
+console.log(updatedSkills);
+
+
+const showSkills = (...skills) => {
+    console.log(skills);
+};
+
+showSkills("HTML", "CSS", "JavaScript");
+
+
+const greetUser = (user = "Guest") => {
+    console.log(`Welcome ${user}`);
+};
+
+greetUser();
+greetUser("Nargis");
