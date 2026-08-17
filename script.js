@@ -67,3 +67,33 @@ const greetUser = (user = "Guest") => {
 
 greetUser();
 greetUser("Nargis");
+
+// array method.....
+
+// fE
+const skillsDay3 = ["HTML", "CSS", "JavaScript"];
+
+skillsDay3.forEach(skill => {
+    console.log(skill);
+});
+
+// M
+const numbersDay3 = [1, 2, 3, 4];
+
+const doubledNumbers = numbersDay3.map(num => num * 2);
+
+console.log(doubledNumbers);
+
+// F
+const agesDay3 = [15, 18, 22, 12, 30];
+
+const adults = agesDay3.filter(age => age >= 18);
+
+console.log(adults);
+
+// R
+const marksDay3 = [10, 20, 30, 40];
+
+const totalMarks = marksDay3.reduce((sum, mark) => sum + mark, 0);
+
+console.log(totalMarks);
