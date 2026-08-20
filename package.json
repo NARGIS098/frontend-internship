@@ -1,0 +1,24 @@
+{
+  "name": "frontend-internship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NARGIS098/frontend-internship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/NARGIS098/frontend-internship/issues"
+  },
+  "homepage": "https://github.com/NARGIS098/frontend-internship#readme",
+  "dependencies": {
+    "axios": "^1.19.0"
+  }
+}
