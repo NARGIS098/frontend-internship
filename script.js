@@ -97,3 +97,27 @@ const marksDay3 = [10, 20, 30, 40];
 const totalMarks = marksDay3.reduce((sum, mark) => sum + mark, 0);
 
 console.log(totalMarks);
+console.log("SCRIPT IS WORKING!");
+
+fetch("https://dummyjson.com/quotes")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log("ERROR:", error));
+    const getQuotes = () => {
+    fetch("https://dummyjson.com/quotes")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+
+            const quotesDiv = document.getElementById("quotes");
+
+            data.quotes.forEach(quote => {
+                quotesDiv.innerHTML += `
+                    <p>${quote.quote}</p>
+                    <p><b>Author:</b> ${quote.author}</p>
+                    <hr>
+                `;
+            });
+        })
+        .catch(error => console.log("ERROR:", error));
+};
