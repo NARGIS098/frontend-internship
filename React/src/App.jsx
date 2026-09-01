@@ -1,33 +1,27 @@
-function App() {
-  const name = "Nargis";
-  const profession = "Computer Science Student";
+import Header from "./components/Header";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
+function App() {
   return (
     <div>
-      <header>
-        <h1>My Portfolio</h1>
-        <p>Welcome to my portfolio.</p>
-      </header>
+      <Header />
 
-      <section>
-        <h2>About Me</h2>
-        <p>My name is {name}.</p>
-        <p>I am a {profession}.</p>
-      </section>
+      <About
+        name="Nargis Sheikh"
+        description="I am a Computer Science student and Frontend Development Intern."
+      />
 
-      <section>
-        <h2>My Skills</h2>
-        <p>HTML</p>
-        <p>CSS</p>
-        <p>JavaScript</p>
-        <p>React</p>
-      </section>
+      <Skills />
 
-      <section>
-        <h2>My Projects</h2>
-        <p>Portfolio Website</p>
-        <p>JavaScript Project</p>
-      </section>
+      <Projects />
+
+      <Contact />
+
+      <Footer />
     </div>
   );
 }
