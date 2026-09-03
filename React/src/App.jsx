@@ -4,6 +4,8 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import "./App.css";
+import Counter from "./components/Counter";
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
       <Contact />
 
       <Footer />
+      
+      <Counter />
+
     </div>
   );
 }
