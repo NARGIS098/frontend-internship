@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Counter from "./components/Counter";
 import MessageForm from "./components/MessageForm";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
       <Counter />
       
       <MessageForm />
+
+      <TodoList />
 
     </div>
   );
