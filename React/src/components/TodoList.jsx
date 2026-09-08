@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TodoList() {
-  const [tasks, setTasks] = useState([
-    "Learn React",
-    "Practice JavaScript",
-    "Complete Internship Task"
-  ]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+
+    return savedTasks
+      ? JSON.parse(savedTasks)
+      : [
+          "Learn React",
+          "Practice JavaScript",
+          "Complete Internship Task"
+        ];
+  });
 
   const [newTask, setNewTask] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = () => {
     if (newTask.trim() === "") {
       return;
     }
 
-    setTasks([...tasks, newTask]);
+    setTasks([...tasks, newTask.trim()]);
     setNewTask("");
   };
 
