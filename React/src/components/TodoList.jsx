@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
+import TodoItem from "./TodoItem";
 
 function TodoList() {
-  const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks");
+ const [tasks, setTasks] = useState(() => {
+  const savedTasks = localStorage.getItem("tasks");
 
-    return savedTasks
-      ? JSON.parse(savedTasks)
-      : [
-          "Learn React",
-          "Practice JavaScript",
-          "Complete Internship Task"
-        ];
-  });
+  return savedTasks ? JSON.parse(savedTasks) : [];
+});
 
   const [newTask, setNewTask] = useState("");
 
@@ -24,8 +19,28 @@ function TodoList() {
       return;
     }
 
-    setTasks([...tasks, newTask.trim()]);
+    const task = {
+      id: Date.now(),
+      text: newTask.trim(),
+      completed: false
+    };
+
+    setTasks([...tasks, task]);
     setNewTask("");
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const toggleTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
   };
 
   return (
@@ -44,9 +59,14 @@ function TodoList() {
       </div>
 
       <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
-        ))}
+        {tasks.map((task) => (
+  <TodoItem
+    key={task.id}
+    task={task}
+    onToggle={toggleTask}
+    onDelete={deleteTask}
+  />
+))}
       </ul>
     </section>
   );
