@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
 
 import Header from "./components/Header";
 import About from "./components/About";
@@ -10,6 +11,8 @@ import "./App.css";
 import Counter from "./components/Counter";
 import MessageForm from "./components/MessageForm";
 import TodoList from "./components/TodoList";
+import ProjectDetails from "./components/ProjectDetails";
+import UsersPage from "./components/UsersPage";
 
 function Home() {
   return (
@@ -53,21 +56,81 @@ function AboutPage() {
 }
 
 function ContactPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setError("");
+    setSuccess("");
+
+    if (name.trim() === "") {
+      setError("Please enter your name.");
+      return;
+    }
+
+    if (email.trim() === "") {
+      setError("Please enter your email.");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      setError("Please enter a valid email.");
+      return;
+    }
+
+    if (message.trim() === "") {
+      setError("Please enter your message.");
+      return;
+    }
+
+    setSuccess("Message sent successfully!");
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
   return (
     <div className="page">
       <h1>Contact Me</h1>
+
       <p>You can contact me for frontend development opportunities.</p>
 
-      <form>
-        <input type="text" placeholder="Your Name" />
-        <input type="email" placeholder="Your Email" />
-        <textarea placeholder="Your Message"></textarea>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Your Name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+
+        <textarea
+          placeholder="Your Message"
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+        ></textarea>
+
         <button type="submit">Send Message</button>
       </form>
+
+      {error && <p>{error}</p>}
+
+      {success && <p>{success}</p>}
     </div>
   );
 }
-
 function App() {
   return (
     <BrowserRouter>
@@ -83,6 +146,11 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
 
         <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="/project/:id" element={<ProjectDetails />} />
+
+        <Route path="/users" element={<UsersPage />} />
+        
       </Routes>
     </BrowserRouter>
   );
